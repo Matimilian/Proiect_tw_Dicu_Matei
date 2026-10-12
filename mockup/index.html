@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>Beam - Magazin Digital de Jocuri</title>
+ <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+ <nav class="navbar">
+   <div class="nav-container">
+     <div class="logo">BEAM</div>
+     <ul class="nav-links">
+       <li><a href="#acasa">MAGAZIN</a></li>
+       <li><a href="#librarie">COMUNITATE</a></li>
+       <li><a href="#acasa">DESPRE</a></li>
+       <li><a href="#acasa">ASISTENȚĂ</a></li>
+     </ul>
+   </div>
+ </nav>
+
+ <header id="acasa" class="app-header">
+   <div class="header-content">
+     <h1>MAGAZINUL TĂU DIGITAL</h1>
+     <p>Descoperă, achiziționează și joacă titlurile preferate pe Beam.</p>
+     <div class="app-count">Librărie: 3 jocuri (2 instalate)</div>
+   </div>
+ </header>
+
+ <main class="container">
+   <section id="magazin" class="panel store-panel">
+     <h2>Adaugă în coș / Achiziționează</h2>
+     <form class="item-form">
+       <label>Caută sau introdu numele jocului
+         <input type="text" name="titlu" placeholder="Ex: Cyberpunk 2077" />
+       </label>
+       <label>Genul Jocului
+         <select name="eticheta">
+           <option value="actiune">Acțiune</option>
+           <option value="rpg">RPG</option>
+           <option value="strategie">Strategie</option>
+           <option value="indie">Indie</option>
+         </select>
+       </label>
+       <div class="form-actions">
+         <button type="submit" class="btn-green">Adaugă în Librărie</button>
+       </div>
+     </form>
+   </section>
+
+   <section id="librarie" class="panel library-panel">
+     <h2>LIBRĂRIA MEA (Toate jocurile)</h2>
+     <ul class="item-list">
+       <li class="item-card">
+         <div class="game-info">
+           <div class="game-thumb"></div>
+           <div>
+             <h3>The Witcher 3: Wild Hunt</h3>
+             <span class="badge">RPG</span>
+           </div>
+         </div>
+         <span class="status ready">JOACĂ</span>
+       </li>
+       <li class="item-card done"> 
+         <div class="game-info">
+           <div class="game-thumb bg-action"></div>
+           <div>
+             <h3>Counter-Strike 2</h3>
+             <span class="badge">Acțiune</span>
+           </div>
+         </div>
+         <span class="status install">INSTALEAZĂ</span> 
+       </li>
+       <li class="item-card"> 
+         <div class="game-info">
+           <div class="game-thumb bg-indie"></div>
+           <div>
+             <h3>Stardew Valley</h3>
+             <span class="badge">Indie</span>
+           </div>
+         </div>
+         <span class="status ready">JOACĂ</span>
+       </li>
+     </ul>
+   </section>
+ </main>
+
+ <footer class="app-footer">
+   <p>© 2026 Beam Corporation. Toate drepturile rezervate. Toate mărcile comerciale sunt proprietatea respectivilor deținători.</p>
+ </footer>
+
+ <script src="jocuri.js"></script>
+</body>
+</html>

@@ -21,3 +21,42 @@ The app now lives in `frontend/`, built with Vite. The data from stage 2 moved i
 cd frontend
 npm install
 npm run dev
+```
+Then open the address printed in the terminal (usually http://localhost:5173).
+
+## Status
+- [x] Stage 1: static mockup
+- [x] Stage 2: data logic in JavaScript
+- [x] Stage 3: Vite and React project
+
+## Stage 2 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S2-R1 | JS file linked, logs on page load | mockup/index.html#L... (pune link aici) | open page, F12 |
+| S2-R2 | 3+ items with id, name, state, tag | mockup/jocuri.js#L... (pune link aici) | read |
+| S2-R3 | list, count, search, add, toggle, delete | mockup/jocuri.js#L... (pune link aici) | console output |
+| S2-R4 | add rejects empty name and invalid tag | mockup/jocuri.js#L... (pune link aici) | last 2 console lines |
+| S2-R5 | original array unchanged after add | mockup/jocuri.js#L... (pune link aici) | console line |
+| S2-R6 | README Stage 2 section + AI log | README.md, ai-log/etapa-02.md | read |
+| S2-R7 | commit "Stage 2" pushed | (pune link către commit aici) | commit history |
+
+## Stage 3 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S3-R1 | npm run dev starts without errors | frontend/package.json | npm install, npm run dev |
+| S3-R2 | app name and counter computed from data | frontend/src/App.jsx#L... (pune link aici) | edit data, save |
+| S3-R3 | data from README, not from the example | frontend/src/App.jsx#L... (pune link aici) | compare with README |
+| S3-R4 | stage 1 styles reused | frontend/src/App.css#L... (pune link aici) | look at the page |
+| S3-R5 | node_modules ignored, build passes | frontend/.gitignore#L... (pune link aici) | npm run build |
+| S3-R6 | README Stage 3 section + AI log | README.md, ai-log/etapa-03.md | read |
+| S3-R7 | commit "Stage 3" pushed | (pune link către commit aici) | commit history |
+
+# Stage 1: AI log
+## Tools
+- Gemini
+## Conversations
+- Crearea layout-ului inițial pentru magazinul de jocuri.
+## Key requests
+- Modificarea unui șablon HTML/CSS pentru a se potrivi cu tema platformei Beam.
+## What I learned / what did not work
+I learned how to properly use github. What did not work but was a really easy debug was about the README. It didn't show properly on github, apparently i didn't save it in vscod so ofc it showed nothing.

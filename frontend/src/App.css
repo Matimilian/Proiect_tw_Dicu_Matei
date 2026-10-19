@@ -14,7 +14,6 @@ html {
   --text-main: #c6d4df;
   --text-light: #ffffff;
   --text-muted: #8f98a0;
-  
   --steam-blue: #66c0f4;
   --steam-dark-blue: #2a475e;
 }
@@ -52,7 +51,6 @@ body {
   color: var(--text-light);
   letter-spacing: 2px;
   margin-right: 40px;
-  text-transform: uppercase;
 }
 
 .nav-links {
@@ -68,12 +66,11 @@ body {
   color: #b8b6b4;
   font-weight: 600;
   font-size: 0.9rem;
-  text-transform: uppercase;
   transition: color 0.2s ease;
 }
 
-.nav-links a:hover {
-  color: var(--text-light);
+.nav-links a:hover { 
+  color: var(--text-light); 
 }
 
 .app-header {
@@ -81,9 +78,9 @@ body {
   text-align: center;
 }
 
-.header-content {
-  max-width: 940px;
-  margin: 0 auto;
+.header-content { 
+  max-width: 940px; 
+  margin: 0 auto; 
 }
 
 .app-header h1 {
@@ -114,7 +111,7 @@ body {
   margin: 0 auto 60px;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: 1fr; /* O singura coloana pentru Etapa 3 */
+  grid-template-columns: 1fr;
   gap: 20px;
   align-items: start;
 }
@@ -131,7 +128,6 @@ body {
   font-size: 1.1rem;
   font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 1px;
   color: var(--text-light);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 10px;
@@ -141,9 +137,130 @@ body {
   background: linear-gradient(to right, rgba(42, 71, 94, 0.5), rgba(0, 0, 0, 0.2));
 }
 
+.section-block {
+  margin-bottom: 60px;
+  scroll-margin-top: 100px;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  margin-top: -10px;
+}
+
+.comm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comm-card {
+  display: flex;
+  gap: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 3px solid var(--steam-dark-blue);
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.comm-text {
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.comm-author {
+  color: var(--steam-blue);
+  font-weight: bold;
+}
+
+.comm-quote {
+  margin: 5px 0 0 0;
+  font-style: italic;
+  color: var(--text-light);
+}
+
+.about-panel {
+  background: linear-gradient(135deg, rgba(42, 71, 94, 0.6), rgba(23, 26, 33, 0.6));
+}
+
+.about-content p {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.about-features {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.about-features li {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 12px 15px;
+  border-radius: 3px;
+  font-size: 0.95rem;
+}
+
+.support-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-support {
+  background-color: var(--steam-blue);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-support:hover {
+  background-color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  font-weight: normal;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.bg-actiune { background-color: #4a2b2b; }
+.bg-indie { background-color: #2b4a3a; }
+.bg-rpg { background-color: #4a3b2b; }
+.bg-strategie { background-color: #2b3a4a; }
+
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
     gap: 15px;
+  }
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+  .support-actions {
+    flex-direction: column;
   }
 }

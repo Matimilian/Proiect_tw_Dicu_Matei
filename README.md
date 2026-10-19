@@ -28,6 +28,7 @@ Then open the address printed in the terminal (usually http://localhost:5173).
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
+- [x] Stage 4: components rendered from datals
 
 ## Stage 2 Checklist
 | ID | Requirement | Where (permalink) | How to check |
@@ -50,6 +51,23 @@ Then open the address printed in the terminal (usually http://localhost:5173).
 | S3-R5 | node_modules ignored, build passes | frontend/.gitignore#L... (pune link aici) | npm run build |
 | S3-R6 | README Stage 3 section + AI log | README.md, ai-log/etapa-03.md | read |
 | S3-R7 | commit "Stage 3" pushed | (pune link către commit aici) | commit history |
+
+## Stage 4: components
+The list is rendered from the data, through two components:
+`JocList` receives the whole array and renders one card per item.
+`JocCard` receives a single item through props and displays it.
+
+
+## Stage 4 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S4-R1 | 2+ components in src/components/ | frontend/src/components/ | open folder |
+| S4-R2 | card receives data through props | frontend/src/components/JocCard.jsx#L... (pune link aici) | read |
+| S4-R3 | map + key={id}, no console warnings | frontend/src/components/JocList.jsx#L... (pune link aici) | F12, Console |
+| S4-R4 | message for empty list | frontend/src/components/JocList.jsx#L... (pune link aici) | set array to [] |
+| S4-R5 | state changes the card look | frontend/src/components/JocCard.jsx#L... (pune link aici) | toggle a done flag |
+| S4-R6 | README Stage 4 section + AI log | README.md, ai-log/etapa-04.md | read |
+| S4-R7 | commit "Stage 4" pushed | (pune link către commit aici) | commit history |
 
 # Stage 1: AI log
 ## Tools

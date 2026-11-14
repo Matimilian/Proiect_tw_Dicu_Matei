@@ -1,20 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import JocList from "./components/JocList.jsx";
-
-const JOCURI_INITIALE = [
-  { id: 1, titlu: "The Witcher 3: Wild Hunt", instalat: true, gen: "rpg" },
-  { id: 2, titlu: "Counter-Strike 2", instalat: false, gen: "actiune" },
-  { id: 3, titlu: "Stardew Valley", instalat: true, gen: "indie" }
-];
+import { fetchJocuri } from "./api.js";
 
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export default function App() {
-  const [jocuri, setJocuri] = useState(JOCURI_INITIALE);
+  // Datele vin de la server (json-server, db.json), deci lista pornește goală
+  const [jocuri, setJocuri] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [tema, setTema] = useState(temaInitiala);
 
+  // Rulează o singură dată, după prima randare
+  useEffect(() => {
+    let ignore = false; // nu se setează state dacă pagina s-a închis între timp
+
+    async function load() {
+      try {
+        const data = await fetchJocuri();
+        if (!ignore) setJocuri(data);
+      } catch (err) {
+        if (!ignore) setError(err.message);
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  // În Etapa 6 modificările rămân locale: se pierd la refresh (rezolvat în Etapa 7)
   function handleToggle(id) {
     setJocuri((prev) =>
       prev.map((j) => (j.id === id ? { ...j, instalat: !j.instalat } : j))
@@ -68,11 +88,20 @@ export default function App() {
         <section id="magazin" className="panel store-panel section-block">
           <h2>MAGAZIN & LIBRĂRIA MEA</h2>
           <p className="section-desc">Gestionează-ți jocurile, instalează titluri noi sau pornește direct în aventură.</p>
-          <JocList
-            jocuri={jocuri}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-          />
+
+          {loading && <p className="info">Se încarcă librăria...</p>}
+          {error && (
+            <p className="error">
+              Nu am putut încărca jocurile: {error}. Rulează <code>npm run api</code>?
+            </p>
+          )}
+          {!loading && !error && (
+            <JocList
+              jocuri={jocuri}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+            />
+          )}
         </section>
 
         <section id="comunitate" className="panel comm-panel section-block">

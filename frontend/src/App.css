@@ -20,6 +20,8 @@ html {
   --steam-dark-blue: #d8dee9;
   --danger: #e11d48;
   --border-subtle: rgba(0, 0, 0, 0.1);
+  --error-bg: #fdf2f8;
+  --error-border: #fbcfe8;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,6 +38,8 @@ html {
     --steam-dark-blue: #2a475e;
     --danger: #f43f5e;
     --border-subtle: rgba(255, 255, 255, 0.1);
+    --error-bg: #3b1d2e;
+    --error-border: #6b2a4a;
   }
 }
 
@@ -52,6 +56,8 @@ html {
   --steam-dark-blue: #2a475e;
   --danger: #f43f5e;
   --border-subtle: rgba(255, 255, 255, 0.1);
+  --error-bg: #3b1d2e;
+  --error-border: #6b2a4a;
 }
 
 body {
@@ -440,4 +446,22 @@ body {
   .game-thumb {
     display: none;
   }
+}
+
+/* Etapa 6: stări de încărcare și de eroare */
+.info {
+  color: var(--text-muted);
+}
+
+.error {
+  color: var(--danger);
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.error code {
+  font-family: Consolas, monospace;
+  font-weight: bold;
 }

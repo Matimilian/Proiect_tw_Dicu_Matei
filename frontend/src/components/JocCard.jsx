@@ -11,16 +11,17 @@ export default function JocCard({ joc, onToggle, onDelete }) {
   const statusText = joc.instalat ? "JOACĂ" : "INSTALEAZĂ";
 
   return (
-    <li className={cardClass}>
+    <li className={cardClass} data-testid="item" data-id={joc.id}>
       <label className="task-main game-info">
         <input
           type="checkbox"
           checked={joc.instalat}
           onChange={() => onToggle(joc.id)}
+          data-testid="item-toggle"
         />
         <div className={`game-thumb bg-${joc.gen}`}></div>
         <div>
-          <h3>{joc.titlu}</h3>
+          <h3 data-testid="item-title">{joc.titlu}</h3>
           <span className="badge">{ETICHETE_GEN[joc.gen]}</span>
         </div>
       </label>
@@ -31,6 +32,7 @@ export default function JocCard({ joc, onToggle, onDelete }) {
           className="btn-danger"
           onClick={() => onDelete(joc.id)}
           aria-label={`Șterge ${joc.titlu}`}
+          data-testid="item-delete"
         >
           Șterge
         </button>

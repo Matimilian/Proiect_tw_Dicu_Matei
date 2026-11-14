@@ -27,6 +27,9 @@ The list lives in React state. Checking and deleting work from the page, and the
 ## Stage 6: data from a mock API
 The list of games is served by json-server from `frontend/db.json` (resource `jocuri`, route `/jocuri`). The app fetches it on load with `useEffect` and shows a loading state and an error state. All HTTP requests live in `frontend/src/api.js`; the API address comes from `VITE_API_URL` (see `frontend/.env.example`).
 
+## Stage 7: form and validation
+Games can be added from the page, with the form on the left of the list. The form (`JocForm`) is controlled and validated: the title is required and has at most 100 characters, and the genre must be one of the fixed values. Every change (add, toggle, delete) goes to the API first and the list is updated with what the server returns, so all changes survive a refresh. The button is disabled while saving, and the typed text stays in the field if saving fails. `tw.json` and the `data-testid` attributes are the markers for the automated check.
+
 ## How to run
 ```bash
 cd frontend
@@ -43,7 +46,8 @@ Then open the address printed in the terminal (usually http://localhost:5173).
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
-- [ ] Stage 7: form and validation
+- [x] Stage 7: form and validation
+- [ ] Stage 8: routing and detail page
 
 ## Stage 2 Checklist
 | ID | Requirement | Where (permalink) | How to check |

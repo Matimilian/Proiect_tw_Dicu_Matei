@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import JocList from "./components/JocList.jsx";
-import { fetchJocuri } from "./api.js";
+import JocForm from "./components/JocForm.jsx";
+import { createJoc, deleteJoc, fetchJocuri, updateJoc } from "./api.js";
 
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -34,15 +35,32 @@ export default function App() {
     };
   }, []);
 
-  // În Etapa 6 modificările rămân locale: se pierd la refresh (rezolvat în Etapa 7)
-  function handleToggle(id) {
-    setJocuri((prev) =>
-      prev.map((j) => (j.id === id ? { ...j, instalat: !j.instalat } : j))
-    );
+  // Întâi serverul, apoi state-ul: pe ecran ajunge doar ce s-a salvat.
+  // Fără try: eroarea ajunge înapoi în formular, care o afișează lângă câmpuri.
+  async function handleAdd(joc) {
+    const creat = await createJoc(joc); // serverul întoarce jocul cu id
+    setJocuri((prev) => [...prev, creat]);
   }
 
-  function handleDelete(id) {
-    setJocuri((prev) => prev.filter((j) => j.id !== id));
+  async function handleToggle(id) {
+    const joc = jocuri.find((j) => j.id === id);
+    try {
+      setError(null);
+      const actualizat = await updateJoc(id, { instalat: !joc.instalat });
+      setJocuri((prev) => prev.map((j) => (j.id === id ? actualizat : j)));
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
+  async function handleDelete(id) {
+    try {
+      setError(null);
+      await deleteJoc(id);
+      setJocuri((prev) => prev.filter((j) => j.id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   function handleTema() {
@@ -89,19 +107,34 @@ export default function App() {
           <h2>MAGAZIN & LIBRĂRIA MEA</h2>
           <p className="section-desc">Gestionează-ți jocurile, instalează titluri noi sau pornește direct în aventură.</p>
 
-          {loading && <p className="info">Se încarcă librăria...</p>}
-          {error && (
-            <p className="error">
-              Nu am putut încărca jocurile: {error}. Rulează <code>npm run api</code>?
-            </p>
-          )}
-          {!loading && !error && (
-            <JocList
-              jocuri={jocuri}
-              onToggle={handleToggle}
-              onDelete={handleDelete}
-            />
-          )}
+          {/* Etapa 7: formularul în stânga, lista în dreapta */}
+          <div className="store-layout">
+            <div className="store-form">
+              <h3 className="sub-title">Adaugă joc</h3>
+              <JocForm onAdd={handleAdd} />
+            </div>
+
+            <div className="store-list">
+              <h3 className="sub-title">Librăria mea</h3>
+              {loading && (
+                <p className="info" data-testid="loading">
+                  Se încarcă librăria...
+                </p>
+              )}
+              {error && (
+                <p className="error" data-testid="error">
+                  {error}. Verifică dacă rulează <code>npm run api</code>.
+                </p>
+              )}
+              {!loading && (
+                <JocList
+                  jocuri={jocuri}
+                  onToggle={handleToggle}
+                  onDelete={handleDelete}
+                />
+              )}
+            </div>
+          </div>
         </section>
 
         <section id="comunitate" className="panel comm-panel section-block">

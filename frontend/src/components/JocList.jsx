@@ -1,9 +1,9 @@
 import JocCard from "./JocCard.jsx";
 
-export default function JocList({ jocuri }) {
+export default function JocList({ jocuri, onToggle, onDelete }) {
   if (jocuri.length === 0) {
     return (
-      <p style={{ color: "#8f98a0", padding: "10px 0" }}>
+      <p className="empty">
         Librăria ta este goală. Vizitează magazinul pentru a adăuga jocuri.
       </p>
     );
@@ -12,7 +12,12 @@ export default function JocList({ jocuri }) {
   return (
     <ul className="item-list">
       {jocuri.map((joc) => (
-        <JocCard key={joc.id} joc={joc} />
+        <JocCard
+          key={joc.id}
+          joc={joc}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
       ))}
     </ul>
   );

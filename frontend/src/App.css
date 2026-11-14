@@ -8,21 +8,57 @@ html {
 }
 
 :root {
+  --bg-main: #e5e9f0;
+  --bg-gradient: radial-gradient(circle at top center, #d0dbe5 0%, #e5e9f0 40%);
+  --bg-dark: #2a475e;
+  --bg-panel: rgba(255, 255, 255, 0.85);
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --text-main: #2e3440;
+  --text-light: #171a21;
+  --text-muted: #4c566a;
+  --steam-blue: #1a73e8;
+  --steam-dark-blue: #d8dee9;
+  --danger: #e11d48;
+  --border-subtle: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-main: #1b2838;
+    --bg-gradient: radial-gradient(circle at top center, #2a475e 0%, #1b2838 40%);
+    --bg-dark: #171a21;
+    --bg-panel: rgba(0, 0, 0, 0.2);
+    --bg-card: rgba(0, 0, 0, 0.3);
+    --text-main: #c6d4df;
+    --text-light: #ffffff;
+    --text-muted: #8f98a0;
+    --steam-blue: #66c0f4;
+    --steam-dark-blue: #2a475e;
+    --danger: #f43f5e;
+    --border-subtle: rgba(255, 255, 255, 0.1);
+  }
+}
+
+:root[data-theme="dark"] {
   --bg-main: #1b2838;
+  --bg-gradient: radial-gradient(circle at top center, #2a475e 0%, #1b2838 40%);
   --bg-dark: #171a21;
   --bg-panel: rgba(0, 0, 0, 0.2);
+  --bg-card: rgba(0, 0, 0, 0.3);
   --text-main: #c6d4df;
   --text-light: #ffffff;
   --text-muted: #8f98a0;
   --steam-blue: #66c0f4;
   --steam-dark-blue: #2a475e;
+  --danger: #f43f5e;
+  --border-subtle: rgba(255, 255, 255, 0.1);
 }
 
 body {
   margin: 0;
   font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
   background-color: var(--bg-main);
-  background-image: radial-gradient(circle at top center, #2a475e 0%, #1b2838 40%);
+  background-image: var(--bg-gradient);
   background-attachment: fixed;
   color: var(--text-main);
   line-height: 1.5;
@@ -48,7 +84,7 @@ body {
 .logo {
   font-size: 1.8rem;
   font-weight: 800;
-  color: var(--text-light);
+  color: #ffffff;
   letter-spacing: 2px;
   margin-right: 40px;
 }
@@ -70,12 +106,31 @@ body {
 }
 
 .nav-links a:hover { 
-  color: var(--text-light); 
+  color: #ffffff; 
 }
 
 .app-header {
+  position: relative;
   padding: 60px 20px 40px;
   text-align: center;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  padding: 6px 12px;
+  border: 1px solid var(--text-muted);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-light);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: rgba(128, 128, 128, 0.15);
 }
 
 .header-content { 
@@ -129,12 +184,12 @@ body {
   font-weight: normal;
   text-transform: uppercase;
   color: var(--text-light);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-subtle);
   padding-bottom: 10px;
 }
 
 .store-panel {
-  background: linear-gradient(to right, rgba(42, 71, 94, 0.5), rgba(0, 0, 0, 0.2));
+  background: linear-gradient(to right, rgba(42, 71, 94, 0.3), var(--bg-panel));
 }
 
 .section-block {
@@ -149,6 +204,121 @@ body {
   margin-top: -10px;
 }
 
+.empty {
+  color: var(--text-muted);
+  padding: 10px 0;
+  font-style: italic;
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: var(--bg-card);
+  border-left: 4px solid transparent;
+  transition: background-color 0.2s ease;
+}
+
+.item-card:hover {
+  border-left: 4px solid var(--steam-blue);
+}
+
+.task-main {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.task-main input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--steam-blue);
+  cursor: pointer;
+}
+
+.game-thumb {
+  width: 120px;
+  height: 45px;
+  background-color: #2a475e;
+  border-radius: 2px;
+}
+
+.item-card h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  color: var(--text-light);
+  font-weight: normal;
+}
+
+.badge {
+  display: inline-block;
+  background-color: var(--steam-dark-blue);
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  color: var(--steam-blue);
+  text-transform: uppercase;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+
+.status.ready {
+  background-color: var(--steam-blue);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.status.install {
+  background-color: rgba(128, 128, 128, 0.2);
+  color: var(--text-main);
+}
+
+.btn-danger {
+  border: 1px solid var(--danger);
+  background: transparent;
+  color: var(--danger);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.item-card.done {
+  opacity: 0.65;
+}
+
+.item-card.done h3 {
+  color: var(--text-muted);
+}
+
 .comm-list {
   display: flex;
   flex-direction: column;
@@ -158,7 +328,7 @@ body {
 .comm-card {
   display: flex;
   gap: 15px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-card);
   padding: 15px;
   border-radius: 4px;
   border-left: 3px solid var(--steam-dark-blue);
@@ -188,7 +358,7 @@ body {
 }
 
 .about-panel {
-  background: linear-gradient(135deg, rgba(42, 71, 94, 0.6), rgba(23, 26, 33, 0.6));
+  background: linear-gradient(135deg, rgba(42, 71, 94, 0.25), var(--bg-panel));
 }
 
 .about-content p {
@@ -207,7 +377,7 @@ body {
 }
 
 .about-features li {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--bg-card);
   padding: 12px 15px;
   border-radius: 3px;
   font-size: 0.95rem;
@@ -222,29 +392,33 @@ body {
 
 .btn-support {
   background-color: var(--steam-blue);
-  color: #000;
+  color: #ffffff;
   border: none;
   padding: 12px 24px;
   border-radius: 2px;
   font-weight: bold;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: opacity 0.2s;
 }
 
 .btn-support:hover {
-  background-color: #ffffff;
+  opacity: 0.85;
 }
 
 .btn-secondary {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(128, 128, 128, 0.2);
   color: var(--text-light);
   font-weight: normal;
 }
 
-.btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+.app-footer {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: var(--bg-dark);
+  color: #8f98a0;
+  font-size: 0.8rem;
+  border-top: 1px solid #2a475e;
 }
 
 .bg-actiune { background-color: #4a2b2b; }
@@ -262,5 +436,8 @@ body {
   }
   .support-actions {
     flex-direction: column;
+  }
+  .game-thumb {
+    display: none;
   }
 }

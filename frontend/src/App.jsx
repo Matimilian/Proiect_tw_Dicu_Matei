@@ -1,12 +1,36 @@
+import { useState } from "react";
 import JocList from "./components/JocList.jsx";
 
-const jocuri = [
+const JOCURI_INITIALE = [
   { id: 1, titlu: "The Witcher 3: Wild Hunt", instalat: true, gen: "rpg" },
   { id: 2, titlu: "Counter-Strike 2", instalat: false, gen: "actiune" },
   { id: 3, titlu: "Stardew Valley", instalat: true, gen: "indie" }
 ];
 
+function temaInitiala() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
 export default function App() {
+  const [jocuri, setJocuri] = useState(JOCURI_INITIALE);
+  const [tema, setTema] = useState(temaInitiala);
+
+  function handleToggle(id) {
+    setJocuri((prev) =>
+      prev.map((j) => (j.id === id ? { ...j, instalat: !j.instalat } : j))
+    );
+  }
+
+  function handleDelete(id) {
+    setJocuri((prev) => prev.filter((j) => j.id !== id));
+  }
+
+  function handleTema() {
+    const noua = tema === "dark" ? "light" : "dark";
+    setTema(noua);
+    document.documentElement.dataset.theme = noua;
+  }
+
   const instalate = jocuri.filter((j) => j.instalat).length;
 
   return (
@@ -24,6 +48,13 @@ export default function App() {
       </nav>
 
       <header className="app-header">
+        <button
+          className="theme-toggle"
+          onClick={handleTema}
+          aria-pressed={tema === "dark"}
+        >
+          {tema === "dark" ? "Mod luminos" : "Mod întunecat"}
+        </button>
         <div className="header-content">
           <h1>MAGAZINUL TĂU DIGITAL</h1>
           <p>Descoperă, achiziționează și joacă titlurile preferate pe Beam.</p>
@@ -34,11 +65,14 @@ export default function App() {
       </header>
 
       <main className="container">
-        
         <section id="magazin" className="panel store-panel section-block">
           <h2>MAGAZIN & LIBRĂRIA MEA</h2>
           <p className="section-desc">Gestionează-ți jocurile, instalează titluri noi sau pornește direct în aventură.</p>
-          <JocList jocuri={jocuri} />
+          <JocList
+            jocuri={jocuri}
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+          />
         </section>
 
         <section id="comunitate" className="panel comm-panel section-block">
@@ -89,7 +123,6 @@ export default function App() {
             <button className="btn-support btn-secondary">Rambursări</button>
           </div>
         </section>
-
       </main>
 
       <footer className="app-footer">

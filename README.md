@@ -90,6 +90,17 @@ Then open the address printed in the terminal (usually http://localhost:5173).
 | S5-R7 | no console warnings; README + AI log | `README.md`, `ai-log/etapa-05.md` | F12, Console |
 | S5-R8 | commit "Stage 5" pushed | GitHub Commit History | commit history |
 
+## Stage 6 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S6-R1 | npm run api starts, route shows JSON | [package.json#L8](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/2788ff7102af03a9fb6f0808c90b60a6c6848235/frontend/package.json#L8), [db.json](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/2788ff7102af03a9fb6f0808c90b60a6c6848235/frontend/db.json) | open http://localhost:3001/jocuri |
+| S6-R2 | data no longer in React code | [App.jsx#L11](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/2788ff7102af03a9fb6f0808c90b60a6c6848235/frontend/src/App.jsx#L11) (`useState([])`) | read |
+| S6-R3 | loading message while waiting | [App.jsx#L92](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/2788ff7102af03a9fb6f0808c90b60a6c6848235/frontend/src/App.jsx#L92) | `npx json-server --watch db.json --port 3001 --delay 4000` |
+| S6-R4 | error message when API is down | [App.jsx#L93-L97](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/2788ff7102af03a9fb6f0808c90b60a6c6848235/frontend/src/App.jsx#L93-L97) | stop npm run api, refresh |
+| S6-R5 | fetch only in api.js, URL from env | [api.js#L3-L11](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/2788ff7102af03a9fb6f0808c90b60a6c6848235/frontend/src/api.js#L3-L11), [.env.example](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/2788ff7102af03a9fb6f0808c90b60a6c6848235/frontend/.env.example) | search for fetch |
+| S6-R6 | README Stage 6 section + AI log | [README.md](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/2788ff7102af03a9fb6f0808c90b60a6c6848235/README.md), [ai-log/etapa-06.md](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/2788ff7102af03a9fb6f0808c90b60a6c6848235/ai-log/etapa-06.md) | read |
+| S6-R7 | commit "Stage 6" pushed | [Stage 6: data from a mock API](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/commit/2788ff7102af03a9fb6f0808c90b60a6c6848235) | commit history |
+
 # Stage 1: AI log
 ## Tools
 - Gemini

@@ -19,6 +19,11 @@ export function fetchJocuri() {
   return request("/jocuri");
 }
 
+// Etapa 8: un singur joc, pentru pagina de detaliu (/jocuri/3)
+export function fetchJoc(id) {
+  return request(`/jocuri/${id}`);
+}
+
 export function createJoc(joc) {
   return request("/jocuri", { method: "POST", body: JSON.stringify(joc) });
 }

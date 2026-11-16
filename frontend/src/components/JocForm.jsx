@@ -1,12 +1,7 @@
 import { useState } from "react";
+import { GENURI } from "../constants.js";
+import styles from "./JocForm.module.css";
 
-// Valorile fixe ale câmpului "gen", ca în modelul de date din README
-const GENURI = [
-  { value: "actiune", label: "Acțiune" },
-  { value: "rpg", label: "RPG" },
-  { value: "strategie", label: "Strategie" },
-  { value: "indie", label: "Indie" },
-];
 const TITLU_MAX = 100;
 
 // Formular controlat: state-ul React este sursa de adevăr pentru câmpuri
@@ -46,7 +41,7 @@ export default function JocForm({ onAdd }) {
   }
 
   return (
-    <form className="joc-form" onSubmit={handleSubmit} noValidate data-testid="form">
+    <form className={styles.form} onSubmit={handleSubmit} noValidate data-testid="form">
       <label>
         Titlu
         <input
@@ -78,7 +73,7 @@ export default function JocForm({ onAdd }) {
           {eroare}
         </p>
       )}
-      <button type="submit" disabled={trimite} data-testid="form-submit">
+      <button type="submit" className="btn" disabled={trimite} data-testid="form-submit">
         {trimite ? "Se salvează..." : "Adaugă jocul"}
       </button>
     </form>

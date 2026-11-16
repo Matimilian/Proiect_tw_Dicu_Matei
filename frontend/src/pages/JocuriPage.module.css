@@ -1,0 +1,108 @@
+.hero {
+  padding: 50px 0 30px;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--text-light);
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--steam-blue);
+  margin: 0;
+}
+
+.store {
+  background: linear-gradient(to right, rgba(42, 71, 94, 0.3), var(--bg-panel));
+  margin-bottom: 40px;
+}
+
+/* Formularul în stânga, lista în dreapta */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.formBox {
+  background-color: var(--bg-card);
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.listBox :global(.error) {
+  margin-top: 0;
+}
+
+.subTitle {
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.summary {
+  display: inline-block;
+  margin: -4px 0 12px;
+  background-color: var(--steam-dark-blue);
+  color: var(--steam-blue);
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  border-radius: 2px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.commList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.commCard {
+  display: flex;
+  gap: 15px;
+  background-color: var(--bg-card);
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 3px solid var(--steam-dark-blue);
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.commText {
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.commAuthor {
+  color: var(--steam-blue);
+  font-weight: bold;
+}
+
+.commQuote {
+  margin: 5px 0 0 0;
+  font-style: italic;
+  color: var(--text-light);
+}
+
+/* Pe ecrane înguste, formularul și lista stau unul sub altul */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

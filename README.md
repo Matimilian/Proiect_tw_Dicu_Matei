@@ -30,6 +30,9 @@ The list of games is served by json-server from `frontend/db.json` (resource `jo
 ## Stage 7: form and validation
 Games can be added from the page, with the form on the left of the list. The form (`JocForm`) is controlled and validated: the title is required and has at most 100 characters, and the genre must be one of the fixed values. Every change (add, toggle, delete) goes to the API first and the list is updated with what the server returns, so all changes survive a refresh. The button is disabled while saving, and the typed text stays in the field if saving fails. `tw.json` and the `data-testid` attributes are the markers for the automated check.
 
+## Stage 8: routing and detail page
+Four pages behind React Router: the store with the form and the library (`/`), a detail page for each game at `/jocuri/:id`, an about page (`/despre`) and a 404 page for unknown addresses. The header, navigation, theme button and footer are written once, in `Layout`, and every page is drawn in its `<Outlet />`. The game title in each card is a link to its detail page; the detail page reads the id from the address and asks the server for exactly that game, with an error message and a way back for an id that does not exist. Component styles moved next to their components, in `.module.css` files (CSS Modules); `index.css` keeps only the color variables and the shared classes. The genre values and labels live in `src/constants.js`.
+
 ## How to run
 ```bash
 cd frontend
@@ -47,7 +50,8 @@ Then open the address printed in the terminal (usually http://localhost:5173).
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
-- [ ] Stage 8: routing and detail page
+- [x] Stage 8: routing and detail page
+- [ ] Stage 9: own backend with Express
 
 ## Stage 2 Checklist
 | ID | Requirement | Where (permalink) | How to check |

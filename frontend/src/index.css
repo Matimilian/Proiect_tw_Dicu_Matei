@@ -1,0 +1,178 @@
+/* Stiluri globale: variabile, elemente de bază, clase comune.
+   Stilurile de componentă stau în fișiere *.module.css */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-main: #e5e9f0;
+  --bg-gradient: radial-gradient(circle at top center, #d0dbe5 0%, #e5e9f0 40%);
+  --bg-dark: #2a475e;
+  --bg-panel: rgba(255, 255, 255, 0.85);
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --text-main: #2e3440;
+  --text-light: #171a21;
+  --text-muted: #4c566a;
+  --steam-blue: #1a73e8;
+  --steam-dark-blue: #d8dee9;
+  --danger: #e11d48;
+  --border-subtle: rgba(0, 0, 0, 0.1);
+  --error-bg: #fdf2f8;
+  --error-border: #fbcfe8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-main: #1b2838;
+    --bg-gradient: radial-gradient(circle at top center, #2a475e 0%, #1b2838 40%);
+    --bg-dark: #171a21;
+    --bg-panel: rgba(0, 0, 0, 0.2);
+    --bg-card: rgba(0, 0, 0, 0.3);
+    --text-main: #c6d4df;
+    --text-light: #ffffff;
+    --text-muted: #8f98a0;
+    --steam-blue: #66c0f4;
+    --steam-dark-blue: #2a475e;
+    --danger: #f43f5e;
+    --border-subtle: rgba(255, 255, 255, 0.1);
+    --error-bg: #3b1d2e;
+    --error-border: #6b2a4a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg-main: #1b2838;
+  --bg-gradient: radial-gradient(circle at top center, #2a475e 0%, #1b2838 40%);
+  --bg-dark: #171a21;
+  --bg-panel: rgba(0, 0, 0, 0.2);
+  --bg-card: rgba(0, 0, 0, 0.3);
+  --text-main: #c6d4df;
+  --text-light: #ffffff;
+  --text-muted: #8f98a0;
+  --steam-blue: #66c0f4;
+  --steam-dark-blue: #2a475e;
+  --danger: #f43f5e;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --error-bg: #3b1d2e;
+  --error-border: #6b2a4a;
+}
+
+body {
+  margin: 0;
+  font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
+  background-color: var(--bg-main);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--steam-blue);
+}
+
+:focus-visible {
+  outline: 2px solid var(--steam-blue);
+  outline-offset: 2px;
+}
+
+.panel {
+  background-color: var(--bg-panel);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 10px;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  margin-top: -10px;
+}
+
+.info {
+  color: var(--text-muted);
+}
+
+.empty {
+  color: var(--text-muted);
+  padding: 10px 0;
+  font-style: italic;
+}
+
+.error {
+  color: var(--danger);
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.error code {
+  font-family: Consolas, monospace;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: var(--steam-blue);
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 2px;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  border: 1px solid var(--danger);
+  background: transparent;
+  color: var(--danger);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.badge {
+  display: inline-block;
+  background-color: var(--steam-dark-blue);
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  color: var(--steam-blue);
+  text-transform: uppercase;
+}
+
+/* Culorile genurilor: miniatura din card, avatarele, bannerul din detaliu */
+.bg-actiune { background-color: #4a2b2b; }
+.bg-indie { background-color: #2b4a3a; }
+.bg-rpg { background-color: #4a3b2b; }
+.bg-strategie { background-color: #2b3a4a; }

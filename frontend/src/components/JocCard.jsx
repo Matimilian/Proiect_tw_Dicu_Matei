@@ -1,32 +1,35 @@
-const ETICHETE_GEN = { 
-  actiune: "Acțiune", 
-  rpg: "RPG", 
-  strategie: "Strategie", 
-  indie: "Indie" 
-};
+import { Link } from "react-router-dom";
+import { ETICHETE_GEN } from "../constants.js";
+import styles from "./JocCard.module.css";
 
 export default function JocCard({ joc, onToggle, onDelete }) {
-  const cardClass = !joc.instalat ? "item-card done" : "item-card";
-  const statusClass = joc.instalat ? "status ready" : "status install";
+  const cardClass = !joc.instalat ? `${styles.card} ${styles.done}` : styles.card;
+  const statusClass = joc.instalat
+    ? `${styles.status} ${styles.ready}`
+    : `${styles.status} ${styles.install}`;
   const statusText = joc.instalat ? "JOACĂ" : "INSTALEAZĂ";
 
   return (
     <li className={cardClass} data-testid="item" data-id={joc.id}>
-      <label className="task-main game-info">
+      <div className={styles.main}>
         <input
           type="checkbox"
           checked={joc.instalat}
           onChange={() => onToggle(joc.id)}
+          aria-label={`Marchează ${joc.titlu} ca instalat`}
           data-testid="item-toggle"
         />
-        <div className={`game-thumb bg-${joc.gen}`}></div>
+        <div className={`${styles.thumb} bg-${joc.gen}`}></div>
         <div>
-          <h3 data-testid="item-title">{joc.titlu}</h3>
+          {/* Titlul duce la pagina de detaliu, fără reîncărcare */}
+          <Link to={`/jocuri/${joc.id}`} className={styles.title} data-testid="item-link">
+            {joc.titlu}
+          </Link>
           <span className="badge">{ETICHETE_GEN[joc.gen]}</span>
         </div>
-      </label>
+      </div>
 
-      <div className="card-actions">
+      <div className={styles.actions}>
         <span className={statusClass}>{statusText}</span>
         <button
           className="btn-danger"

@@ -1,4 +1,5 @@
 import JocCard from "./JocCard.jsx";
+import styles from "./JocList.module.css";
 
 export default function JocList({ jocuri, onToggle, onDelete }) {
   if (jocuri.length === 0) {
@@ -10,7 +11,7 @@ export default function JocList({ jocuri, onToggle, onDelete }) {
   }
 
   return (
-    <ul className="item-list">
+    <ul className={styles.list}>
       {jocuri.map((joc) => (
         <JocCard
           key={joc.id}

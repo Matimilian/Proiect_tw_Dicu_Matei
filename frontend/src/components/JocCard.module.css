@@ -1,0 +1,85 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--bg-card);
+  border-left: 4px solid transparent;
+  transition: background-color 0.2s ease;
+}
+
+.card:hover {
+  border-left-color: var(--steam-blue);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.main input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--steam-blue);
+  cursor: pointer;
+}
+
+.thumb {
+  width: 120px;
+  height: 45px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.title {
+  display: block;
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.title:hover {
+  color: var(--steam-blue);
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+
+.ready {
+  background-color: var(--steam-blue);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.install {
+  background-color: rgba(128, 128, 128, 0.2);
+  color: var(--text-main);
+}
+
+/* Jocurile neinstalate apar estompate */
+.done {
+  opacity: 0.65;
+}
+
+.done .title {
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .thumb {
+    display: none;
+  }
+}

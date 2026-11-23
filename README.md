@@ -145,6 +145,17 @@ curl -s -w ' -> %{http_code}\n' http://localhost:3001/jocuri/999
 | S8-R7 | README Stage 8 section + AI log | [README.md](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/b98d9ad21a64de9bfb7b6343c74013ecd0b28d46/README.md), [ai-log/etapa-08.md](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/b98d9ad21a64de9bfb7b6343c74013ecd0b28d46/ai-log/etapa-08.md) | read |
 | S8-R8 | commit "Stage 8" pushed | [Stage 8: routing and detail page](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/commit/b98d9ad21a64de9bfb7b6343c74013ecd0b28d46) | commit history |
 
+## Stage 9 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S9-R1 | npm run dev in backend/ starts the API on 3001 | [backend/package.json#L7-L10](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/backend/package.json#L7-L10), [server.js#L3-L7](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/backend/src/server.js#L3-L7) | run it, open http://localhost:3001/health |
+| S9-R2 | all five routes answer with the right codes | [routes/jocuri.js#L16-L71](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/backend/src/routes/jocuri.js#L16-L71), [app.js#L19](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/backend/src/app.js#L19) | curl commands from README |
+| S9-R3 | invalid data returns 400 with a clear message | [validation.js#L7-L41](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/backend/src/validation.js#L7-L41), [routes/jocuri.js#L43-L47](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/backend/src/routes/jocuri.js#L43-L47) | POST with empty title |
+| S9-R4 | React app works with json-server removed | [frontend/package.json](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/frontend/package.json), [api.js#L11-L15](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/frontend/src/api.js#L11-L15) | stop everything but backend |
+| S9-R5 | no CORS errors in the browser console | [app.js#L9](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/backend/src/app.js#L9) (cors), [.env.example](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/backend/.env.example) | open console |
+| S9-R6 | README Stage 9 section + AI log | [README.md](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/README.md), [ai-log/etapa-09.md](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/blob/77ebda0bcf35a552a3a73501ee1182a68e974f8d/ai-log/etapa-09.md) | read |
+| S9-R7 | commit "Stage 9" pushed | [Stage 9: own backend with Express](https://github.com/Matimilian/Proiect_tw_Dicu_Matei/commit/77ebda0bcf35a552a3a73501ee1182a68e974f8d) | commit history |
+
 # Stage 1: AI log
 ## Tools
 - Gemini

@@ -6,7 +6,7 @@ import styles from "./JocuriPage.module.css";
 
 // Pagina principală: formularul și librăria (tot ce era în App.jsx la Etapa 7)
 export default function JocuriPage() {
-  // Datele vin de la server (json-server, db.json), deci lista pornește goală
+  // Datele vin de la serverul Express din backend/, deci lista pornește goală
   const [jocuri, setJocuri] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -94,7 +94,7 @@ export default function JocuriPage() {
             )}
             {error && (
               <p className="error" data-testid="error">
-                {error}. Verifică dacă rulează <code>npm run api</code>.
+                {error}. Verifică dacă rulează serverul (<code>npm run dev</code> în <code>backend/</code>).
               </p>
             )}
             {!loading && (

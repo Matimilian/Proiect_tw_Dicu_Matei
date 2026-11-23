@@ -1,9 +1,0 @@
-{
-  "jocuri": [
-    { "id": 1, "titlu": "The Witcher 3: Wild Hunt", "instalat": true, "gen": "rpg" },
-    { "id": 2, "titlu": "Counter-Strike 2", "instalat": false, "gen": "actiune" },
-    { "id": 3, "titlu": "Stardew Valley", "instalat": true, "gen": "indie" },
-    { "id": 4, "titlu": "Elden Ring", "instalat": false, "gen": "actiune" },
-    { "id": 5, "titlu": "Baldur's Gate 3", "instalat": true, "gen": "rpg" }
-  ]
-}

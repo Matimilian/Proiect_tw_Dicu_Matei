@@ -33,14 +33,25 @@ Games can be added from the page, with the form on the left of the list. The for
 ## Stage 8: routing and detail page
 Four pages behind React Router: the store with the form and the library (`/`), a detail page for each game at `/jocuri/:id`, an about page (`/despre`) and a 404 page for unknown addresses. The header, navigation, theme button and footer are written once, in `Layout`, and every page is drawn in its `<Outlet />`. The game title in each card is a link to its detail page; the detail page reads the id from the address and asks the server for exactly that game, with an error message and a way back for an id that does not exist. Component styles moved next to their components, in `.module.css` files (CSS Modules); `index.css` keeps only the color variables and the shared classes. The genre values and labels live in `src/constants.js`.
 
+## Stage 9: own backend
+json-server is gone. The API is an Express 5 server in `backend/`, with REST routes for `/jocuri` (list, one game, add, change, delete), server side validation and CORS. The title is required and has at most 100 characters, the genre must be one of `actiune`, `rpg`, `strategie`, `indie` (the same values as `frontend/src/constants.js`), and `instalat` must be true or false; anything else the client sends is ignored. Errors always come back as `{ "error": "..." }`, with 400 for bad data and 404 for a game or route that does not exist, and the React app shows that message. Data is still kept in memory and resets on restart.
+
 ## How to run
 ```bash
-cd frontend
-npm install
-npm run api    # terminal 1, http://localhost:3001/jocuri
-npm run dev    # terminal 2, http://localhost:5173
+cd backend && npm install && npm run dev     # terminal 1, http://localhost:3001/jocuri
+cd frontend && npm install && npm run dev    # terminal 2, http://localhost:5173
 ```
-Then open the address printed in the terminal (usually http://localhost:5173).
+Then open the address printed in the terminal (usually http://localhost:5173). `backend/.env.example` lists the port and the allowed origin (`CORS_ORIGIN`).
+
+Testing the API without the interface (Git Bash):
+```bash
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/jocuri
+curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/jocuri -H "Content-Type: application/json" -d '{"titlu":"Hades","gen":"indie"}'
+curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/jocuri -H "Content-Type: application/json" -d '{"titlu":""}'
+curl -s -w ' -> %{http_code}\n' -X PATCH http://localhost:3001/jocuri/6 -H "Content-Type: application/json" -d '{"instalat":true}'
+curl -s -w ' -> %{http_code}\n' -X DELETE http://localhost:3001/jocuri/6
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/jocuri/999
+```
 
 ## Status
 - [x] Stage 1: static mockup
@@ -51,7 +62,8 @@ Then open the address printed in the terminal (usually http://localhost:5173).
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
 - [x] Stage 8: routing and detail page
-- [ ] Stage 9: own backend with Express
+- [x] Stage 9: own backend with Express
+- [ ] Stage 10: MariaDB and full CRUD
 
 ## Stage 2 Checklist
 | ID | Requirement | Where (permalink) | How to check |
